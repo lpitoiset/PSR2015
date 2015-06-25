@@ -9,73 +9,66 @@
     <script type="text/javascript" src="js/page2.js"></script>
     <script type="text/javascript">
 
-
-var listObject = {
-    id : null
-}
-
-$(document).on('pagebeforeshow', '#landingpage', function(){       
-    $(document).on('click', '#change-page-button', function(){     
-        // store some data
-        storeObject.id = '1234';
-        storeObject.lastname = 'Afghanistan';
+        var country_id = 0,
+        country_name = "",
+        country_refugees = 0;
 
 
-
-
-        //Change page
-        $.mobile.changePage("#country");
-    });    
-});
-
-$(document).on('pagebeforeshow', '#country', function(){     
-    console.log('The selected country is ' + listObject.id );
-// $('#countryname').val("AFG");
-});
-
-// Store object
-var storeObject = {
-    id : '',
-    name : ''
-}
 
     </script>
 </head>
 <body>
     <div data-role="page" id="landingpage">
-        <div data-role="header" data-theme="b">
-            <h1>Displaced Populations Statistics 2015</h1>
+        <div data-role="header" data-theme="a">
+        <a href="index.html" data-icon="home" class="ui-btn-left">Home</a>
+        <h1>Displaced Populations Statistics 2015</h1>
+        <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a>
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="global.html"  data-role="button">Global</a></li>
+                    <li><a href="#" data-role="button" >Countries</a></li>
+                    <li><a href="#page3"  data-role="button">page3</a></li>
+                    <li><a href="about.html"  data-role="button">About</a></li>
+                </ul>
+            </div>
         </div><!-- /header -->
         <div data-role="content">
             <p>Please select an asylum country from the list:</p>
             <div data-role="content">
-            <a href="#" data-role="button" id="change-page-button">Open next page to see a result</a>
-            <br>
                 <ul data-role="listview" data-inset="true" data-filter="true" id="countryList"></ul>
             </div>
         </div><!-- /content --> 
         <div data-role="footer">
             <h4>My Footer</h4>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#landingpage"  data-role="button">HOME</a></li>
-                    <li><a href="#page2"  data-role="button">page2</a></li>
-                    <li><a href="#page3"  data-role="button">page3</a></li>
-                    <li><a href="#page4"  data-role="button">page4</a></li>
-                </ul>
-            </div>
         </div><!-- /footer -->
     </div>
     <!-- country page -->
 
-    <div data-role="page" id="country">
+    <div data-role="page" id="countrypage">
         <div data-role="header" data-theme="b">
             <h1>Displaced Populations Statistics 2015</h1>
         </div><!-- /header -->
         <div data-role="content">
-            <h1 id="countryname">...</h1>
+            <h1><div id="country_name">default</div></h1>
             <div data-role="content">
-hello
+                2014 country population figures
+                <br>
+                <hr>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Refugees</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_refugees">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Asylum-seekers</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_asylum">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Returned Refugees</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_retref">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >IDPs</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_idps">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Returned IDPs</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_retidps">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Stateless persons</div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_stateless">-</div></div></div>
+                </div><!-- /grid-a -->
+
             </div>
         </div><!-- /content --> 
         <div data-role="footer">
@@ -98,24 +91,49 @@ hello
             output += '<li><a href="#" id='+value.id+'>' + value.name + '</a></li>';
         });
         $('#countryList').html(output).listview("refresh");
-        console.log("hello");
+        // console.log("hello");
 
 
-  $('#countryList li a').each(function(){
-        var elementID = $(this).attr('id');      
-        $(document).on('click', '#'+elementID, function(event){  
-            console.log("function"+elementID);
+        $('#countryList li a').each(function(){
+            var elementID = $(this).attr('id');      
+            $(document).on('click', '#'+elementID, function(event){  
+                // console.log("function"+elementID);
             if(event.handled !== true) // This will prevent event triggering more then once
             {
-                listObject.id = elementID; // Save li id into an object, localstorage can also be used, find more about it here: http://stackoverflow.com/questions/14468659/jquery-mobile-document-ready-vs-page-events
-                $.mobile.changePage( "#country");
+                country_id = elementID; 
+                $.mobile.changePage( "#countrypage");
                 event.handled = true;
-            }              
+                console.log("country page id : "+country_id);
+                $('#country_name').html("country "+country_id);
+
+// var obj = jQuery.parseJSON('{"name":"John"}');
+// alert( obj.name === "John" );
+
+// extract json info
+$.getJSON('data/country_data.json', function(data) {
+    var tmp_id = 0;
+    $.each(data, function(index, element) {
+        // console.log("json element");
+        // $('#country_refugees').append($('<div>', {
+        // //     text: element.name
+        // }));
+        tmp_id = element.id;
+        console.log(country_id+"|"+element.id);
+if (tmp_id == country_id) { 
+    console.log("match: "+element.name);
+$("#country_name").html(element.name);
+$("#country_refugees").html(element.refugees);
+
+};
+
+    });
+});
+
+}              
+});
         });
-    });
 
 
     });
-
 </script>
 </html>
