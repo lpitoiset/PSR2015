@@ -1,52 +1,231 @@
 <!doctype html>
+<!-- Laurent Pitoiset 2015 -->
 <html>
 <head>
-    <title>My Page</title>
+    <title>Countries</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="themes/psr2015.min.css" />
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="js/page2.js"></script>
-    <script type="text/javascript">
-
-        var country_id = 0,
-        country_name = "",
-        country_refugees = 0;
-
-
-
-    </script>
 </head>
 <body>
-    <div data-role="page" id="landingpage">
+    <div data-role="page" id="landingpage" data-title="Country list">
         <div data-role="header" data-theme="a">
-        <a href="index.html" data-icon="home" class="ui-btn-left">Home</a>
-        <h1>Displaced Populations Statistics 2015</h1>
-        <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a>
+            <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
+            <h1>Refugee Population Stats 2015</h1>
+            <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext">options</a>
             <div data-role="navbar" data-theme="b">
                 <ul>
-                    <li><a href="global.html"  data-role="button">Global</a></li>
-                    <li><a href="#" data-role="button" >Countries</a></li>
-                    <li><a href="#page3"  data-role="button">page3</a></li>
+                    <li><a href="global.html"  data-role="button" data-ajax="false">Global</a></li>
+                    <li><a href="#" data-role="button"  class="ui-btn ui-state-disabled" data-ajax="false">Dest.</a></li>
+                    <li><a href="origin.html"  data-role="button" data-ajax="false">Origin</a></li>
                     <li><a href="about.html"  data-role="button">About</a></li>
                 </ul>
             </div>
         </div><!-- /header -->
         <div data-role="content">
-            <p>Please select an asylum country from the list:</p>
+            <p>Select an asylum country from the list:</p>
             <div data-role="content">
-                <ul data-role="listview" data-inset="true" data-filter="true" id="countryList"></ul>
+                <ul data-role="listview" data-inset="true" data-filter="true" id="countryList" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                <li class="ui-first-child"><a href="#" id="2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Afghanistan</a></li>
+                <li><a href="#" id="6" class="ui-btn ui-btn-icon-right ui-icon-carat-r" >Albania</a></li>
+                <li><a href="#" id="65" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Algeria</a></li>
+                <li><a href="#" id="7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Andorra</a></li>
+                <li><a href="#" id="3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Angola</a></li>
+                <li><a href="#" id="10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Argentina</a></li>
+                <li><a href="#" id="11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Armenia</a></li>
+                <li><a href="#" id="16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Australia</a></li>
+                <li><a href="#" id="17" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Austria</a></li>
+                <li><a href="#" id="18" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Azerbaijan</a></li>
+                <li><a href="#" id="26" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bahrain</a></li>
+                <li><a href="#" id="24" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bangladesh</a></li>
+                <li><a href="#" id="29" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Belarus</a></li>
+                <li><a href="#" id="20" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Belgium</a></li>
+                <li><a href="#" id="30" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Belize</a></li>
+                <li><a href="#" id="21" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Benin</a></li>
+                <li><a href="#" id="36" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bhutan</a></li>
+                <li><a href="#" id="32" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bolivia (Plurinational State of)</a></li>
+                <li><a href="#" id="28" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bosnia and Herzegovina</a></li>
+                <li><a href="#" id="38" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Botswana</a></li>
+                <li><a href="#" id="33" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Brazil</a></li>
+                <li><a href="#" id="35" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Brunei Darussalam</a></li>
+                <li><a href="#" id="25" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Bulgaria</a></li>
+                <li><a href="#" id="23" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Burkina Faso</a></li>
+                <li><a href="#" id="19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Burundi</a></li>
+                <li><a href="#" id="117" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cambodia</a></li>
+                <li><a href="#" id="46" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cameroon</a></li>
+                <li><a href="#" id="40" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Canada</a></li>
+                <li><a href="#" id="39" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Central African Rep.</a></li>
+                <li><a href="#" id="214" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Chad</a></li>
+                <li><a href="#" id="43" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Chile</a></li>
+                <li><a href="#" id="44" class="ui-btn ui-btn-icon-right ui-icon-carat-r">China</a></li>
+                <li><a href="#" id="96" class="ui-btn ui-btn-icon-right ui-icon-carat-r">China, Hong Kong SAR</a></li>
+                <li><a href="#" id="50" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Colombia</a></li>
+                <li><a href="#" id="48" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Congo</a></li>
+                <li><a href="#" id="53" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Costa Rica</a></li>
+                <li><a href="#" id="99" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Croatia</a></li>
+                <li><a href="#" id="54" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cuba</a></li>
+                <li><a href="#" id="58" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cyprus</a></li>
+                <li><a href="#" id="59" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Czech Rep.</a></li>
+                <li><a href="#" id="45" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cote d'Ivoire</a></li>
+                <li><a href="#" id="178" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Dem. People's Rep. of Korea</a></li>
+                <li><a href="#" id="47" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Dem. Rep. of the Congo</a></li>
+                <li><a href="#" id="63" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Denmark</a></li>
+                <li><a href="#" id="61" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Djibouti</a></li>
+                <li><a href="#" id="64" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Dominican Rep.</a></li>
+                <li><a href="#" id="66" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ecuador</a></li>
+                <li><a href="#" id="67" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Egypt</a></li>
+                <li><a href="#" id="198" class="ui-btn ui-btn-icon-right ui-icon-carat-r">El Salvador</a></li>
+                <li><a href="#" id="88" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Equatorial Guinea</a></li>
+                <li><a href="#" id="68" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Eritrea</a></li>
+                <li><a href="#" id="71" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Estonia</a></li>
+                <li><a href="#" id="72" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ethiopia</a></li>
+                <li><a href="#" id="73" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Finland</a></li>
+                <li><a href="#" id="76" class="ui-btn ui-btn-icon-right ui-icon-carat-r">France</a></li>
+                <li><a href="#" id="93" class="ui-btn ui-btn-icon-right ui-icon-carat-r">French Guiana</a></li>
+                <li><a href="#" id="79" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Gabon</a></li>
+                <li><a href="#" id="86" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Gambia</a></li>
+                <li><a href="#" id="81" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Georgia</a></li>
+                <li><a href="#" id="60" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Germany</a></li>
+                <li><a href="#" id="82" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ghana</a></li>
+                <li><a href="#" id="83" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Gibraltar</a></li>
+                <li><a href="#" id="89" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Greece</a></li>
+                <li><a href="#" id="92" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Guatemala</a></li>
+                <li><a href="#" id="84" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Guinea</a></li>
+                <li><a href="#" id="87" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Guinea-Bissau</a></li>
+                <li><a href="#" id="95" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Guyana</a></li>
+                <li><a href="#" id="100" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Haiti</a></li>
+                <li><a href="#" id="98" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Honduras</a></li>
+                <li><a href="#" id="101" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Hungary</a></li>
+                <li><a href="#" id="108" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Iceland</a></li>
+                <li><a href="#" id="103" class="ui-btn ui-btn-icon-right ui-icon-carat-r">India</a></li>
+                <li><a href="#" id="102" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Indonesia</a></li>
+                <li><a href="#" id="106" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Iran (Islamic Rep. of)</a></li>
+                <li><a href="#" id="107" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Iraq</a></li>
+                <li><a href="#" id="105" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ireland</a></li>
+                <li><a href="#" id="109" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Israel</a></li>
+                <li><a href="#" id="110" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Italy</a></li>
+                <li><a href="#" id="111" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Jamaica</a></li>
+                <li><a href="#" id="113" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Japan</a></li>
+                <li><a href="#" id="112" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Jordan</a></li>
+                <li><a href="#" id="114" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Kazakhstan</a></li>
+                <li><a href="#" id="115" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Kenya</a></li>
+                <li><a href="#" id="121" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Kuwait</a></li>
+                <li><a href="#" id="116" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Kyrgyzstan</a></li>
+                <li><a href="#" id="122" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lao People's Dem. Rep.</a></li>
+                <li><a href="#" id="132" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Latvia</a></li>
+                <li><a href="#" id="123" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lebanon</a></li>
+                <li><a href="#" id="129" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lesotho</a></li>
+                <li><a href="#" id="124" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Liberia</a></li>
+                <li><a href="#" id="125" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Libya</a></li>
+                <li><a href="#" id="127" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Liechtenstein</a></li>
+                <li><a href="#" id="130" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lithuania</a></li>
+                <li><a href="#" id="131" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Luxembourg</a></li>
+                <li><a href="#" id="133" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Macao SAR, China</a></li>
+                <li><a href="#" id="137" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Madagascar</a></li>
+                <li><a href="#" id="154" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Malaysia</a></li>
+                <li><a href="#" id="138" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Maldives</a></li>
+                <li><a href="#" id="142" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Mali</a></li>
+                <li><a href="#" id="143" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Malta</a></li>
+                <li><a href="#" id="149" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Mauritania</a></li>
+                <li><a href="#" id="139" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Mexico</a></li>
+                <li><a href="#" id="135" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Monaco</a></li>
+                <li><a href="#" id="146" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Mongolia</a></li>
+                <li><a href="#" id="145" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Montenegro</a></li>
+                <li><a href="#" id="134" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Morocco</a></li>
+                <li><a href="#" id="148" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Mozambique</a></li>
+                <li><a href="#" id="144" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Myanmar</a></li>
+                <li><a href="#" id="156" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Namibia</a></li>
+                <li><a href="#" id="165" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Nepal</a></li>
+                <li><a href="#" id="163" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Netherlands</a></li>
+                <li><a href="#" id="157" class="ui-btn ui-btn-icon-right ui-icon-carat-r">New Caledonia</a></li>
+                <li><a href="#" id="167" class="ui-btn ui-btn-icon-right ui-icon-carat-r">New Zealand</a></li>
+                <li><a href="#" id="161" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Nicaragua</a></li>
+                <li><a href="#" id="158" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Niger</a></li>
+                <li><a href="#" id="160" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Nigeria</a></li>
+                <li><a href="#" id="164" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Norway</a></li>
+                <li><a href="#" id="168" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Oman</a></li>
+                <li><a href="#" id="169" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Pakistan</a></li>
+                <li><a href="#" id="181" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Palestinian</a></li>
+                <li><a href="#" id="170" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Panama</a></li>
+                <li><a href="#" id="180" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Paraguay</a></li>
+                <li><a href="#" id="172" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Peru</a></li>
+                <li><a href="#" id="173" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Philippines</a></li>
+                <li><a href="#" id="176" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Poland</a></li>
+                <li><a href="#" id="179" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Portugal</a></li>
+                <li><a href="#" id="177" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Puerto Rico</a></li>
+                <li><a href="#" id="183" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Qatar</a></li>
+                <li><a href="#" id="120" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Rep. of Korea</a></li>
+                <li><a href="#" id="136" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Rep. of Moldova</a></li>
+                <li><a href="#" id="185" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Romania</a></li>
+                <li><a href="#" id="186" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Russian Federation</a></li>
+                <li><a href="#" id="187" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Rwanda</a></li>
+                <li><a href="#" id="199" class="ui-btn ui-btn-icon-right ui-icon-carat-r">San Marino</a></li>
+                <li><a href="#" id="188" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Saudi Arabia</a></li>
+                <li><a href="#" id="191" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Senegal</a></li>
+                <li><a href="#" id="202" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Serbia and Kosovo (S/RES/1244 (1999))</a></li>
+                <li><a href="#" id="197" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Sierra Leone</a></li>
+                <li><a href="#" id="192" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Singapore</a></li>
+                <li><a href="#" id="206" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Slovakia</a></li>
+                <li><a href="#" id="207" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Slovenia</a></li>
+                <li><a href="#" id="200" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Somalia</a></li>
+                <li><a href="#" id="247" class="ui-btn ui-btn-icon-right ui-icon-carat-r">South Africa</a></li>
+                <li><a href="#" id="203" class="ui-btn ui-btn-icon-right ui-icon-carat-r">South Sudan</a></li>
+                <li><a href="#" id="70" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Spain</a></li>
+                <li><a href="#" id="128" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Sri Lanka</a></li>
+                <li><a href="#" id="244" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Stateless</a></li>
+                <li><a href="#" id="190" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Sudan</a></li>
+                <li><a href="#" id="205" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Suriname</a></li>
+                <li><a href="#" id="209" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Swaziland</a></li>
+                <li><a href="#" id="208" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Sweden</a></li>
+                <li><a href="#" id="42" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Switzerland</a></li>
+                <li><a href="#" id="212" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Syrian Arab Rep.</a></li>
+                <li><a href="#" id="227" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Taiwan, province of China</a></li>
+                <li><a href="#" id="218" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Tajikistan</a></li>
+                <li><a href="#" id="216" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thailand</a></li>
+                <li><a href="#" id="141" class="ui-btn ui-btn-icon-right ui-icon-carat-r">The former Yugoslav Republic of Macedonia</a></li>
+                <li><a href="#" id="221" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Timor-Leste</a></li>
+                <li><a href="#" id="215" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Togo</a></li>
+                <li><a href="#" id="224" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Tunisia</a></li>
+                <li><a href="#" id="225" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Turkey</a></li>
+                <li><a href="#" id="220" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Turkmenistan</a></li>
+                <li><a href="#" id="229" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Uganda</a></li>
+                <li><a href="#" id="230" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ukraine</a></li>
+                <li><a href="#" id="9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">United Arab Emirates</a></li>
+                <li><a href="#" id="80" class="ui-btn ui-btn-icon-right ui-icon-carat-r">United Kingdom</a></li>
+                <li><a href="#" id="228" class="ui-btn ui-btn-icon-right ui-icon-carat-r">United Rep. of Tanzania</a></li>
+                <li><a href="#" id="233" class="ui-btn ui-btn-icon-right ui-icon-carat-r">United States of America</a></li>
+                <li><a href="#" id="232" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Uruguay</a></li>
+                <li><a href="#" id="234" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Uzbekistan</a></li>
+                <li><a href="#" id="237" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Venezuela (Bolivarian Republic of)</a></li>
+                <li><a href="#" id="240" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Viet Nam</a></li>
+                <li><a href="#" id="69" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Western Sahara</a></li>
+                <li><a href="#" id="246" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Yemen</a></li>
+                <li><a href="#" id="248" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Zambia</a></li>
+                <li class="ui-last-child"><a href="#" id="249" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Zimbabwe</a></li>
+                </ul>
             </div>
         </div><!-- /content --> 
         <div data-role="footer">
-            <h4>My Footer</h4>
+            <h4>List of countries</h4>
         </div><!-- /footer -->
     </div>
     <!-- country page -->
-
-    <div data-role="page" id="countrypage">
+    <div data-role="page" id="countrypage" data-title="country info">
         <div data-role="header" data-theme="b">
-            <h1>Displaced Populations Statistics 2015</h1>
+            <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
+            <h1>Refugee Population Stats 2015</h1>
+            <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext">options</a>
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="global.html"  data-role="button" data-ajax="false">Global</a></li>
+                    <li><a href="countries.html" data-role="button" data-ajax="false" >Dest.</a></li>
+                    <li><a href="origin.html"  data-role="button" data-ajax="false">Origin</a></li>
+                    <li><a href="about.html"  data-role="button">About</a></li>
+                </ul>
+            </div>
         </div><!-- /header -->
         <div data-role="content">
             <h1><div id="country_name">default</div></h1>
@@ -55,85 +234,59 @@
                 <br>
                 <hr>
                 <div class="ui-grid-a">
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Refugees</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_refugees">-</div></div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Asylum-seekers</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_asylum">-</div></div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Returned Refugees</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_retref">-</div></div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >IDPs</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_idps">-</div></div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Returned IDPs</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_retidps">-</div></div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" >Stateless persons</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_stateless">-</div></div></div>
+                <table style="width:100%;">
+                    <tr>
+                        <td>Refugees</td>
+                        <td><div id="country_refugees">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>Asylum-seekers</td>
+                        <td><div id="country_asylum">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>Returned Refugees</td>
+                        <td><div id="country_retref">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>IDPs</td>
+                        <td><div id="country_idps">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>Returned IDPs</td>
+                        <td><div id="country_retidps">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>Stateless persons</td>
+                        <td><div id="country_stateless">-</div></td>
+                    </tr>
+                </table>
                 </div><!-- /grid-a -->
-
+                <br><br>
+                2000-2014 Refugees trend
+                <br>
+                <hr>
+                <div class="img_country_ref_trends" style="width:100%"><img src="images/REF_AFG.png" alt="trends" style="width:100%"></div>
+                <br><br>
+                2014 Refugees in this country: top origins
+                <br>
+                <hr>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" ><div id="country_reftop_1_name">-</div></div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_reftop_1">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" ><div id="country_reftop_2_name">-</div></div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_reftop_2">-</div></div></div>
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-a" ><div id="country_reftop_3_name">-</div></div></div>
+                    <div class="ui-block-b"><div class="ui-bar ui-bar-a" ><div id="country_reftop_3">-</div></div></div>
+                </div><!-- /grid-a -->
             </div>
         </div><!-- /content --> 
         <div data-role="footer">
-            <h4>My Footer</h4>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#landingpage"  data-role="button">HOME</a></li>
-                    <li><a href="#page2"  data-role="button">page2</a></li>
-                    <li><a href="#page3"  data-role="button">page3</a></li>
-                    <li><a href="#page4"  data-role="button">page4</a></li>
-                </ul>
-            </div>
+            <h4>Countries view</h4>
         </div><!-- /footer -->
     </div>
-</body>
 <script type="text/javascript">
-    $(document).ready(function(){
-        var output = '';
-        $.each(data, function (index, value) {
-            output += '<li><a href="#" id='+value.id+'>' + value.name + '</a></li>';
-        });
-        $('#countryList').html(output).listview("refresh");
-        // console.log("hello");
 
-
-        $('#countryList li a').each(function(){
-            var elementID = $(this).attr('id');      
-            $(document).on('click', '#'+elementID, function(event){  
-                // console.log("function"+elementID);
-            if(event.handled !== true) // This will prevent event triggering more then once
-            {
-                country_id = elementID; 
-                $.mobile.changePage( "#countrypage");
-                event.handled = true;
-                console.log("country page id : "+country_id);
-                $('#country_name').html("country "+country_id);
-
-// var obj = jQuery.parseJSON('{"name":"John"}');
-// alert( obj.name === "John" );
-
-// extract json info
-$.getJSON('data/country_data.json', function(data) {
-    var tmp_id = 0;
-    $.each(data, function(index, element) {
-        // console.log("json element");
-        // $('#country_refugees').append($('<div>', {
-        // //     text: element.name
-        // }));
-        tmp_id = element.id;
-        console.log(country_id+"|"+element.id);
-if (tmp_id == country_id) { 
-    console.log("match: "+element.name);
-$("#country_name").html(element.name);
-$("#country_refugees").html(element.refugees);
-
-};
-
-    });
-});
-
-}              
-});
-        });
-
-
-    });
 </script>
+    <script src="js/psr2015.js"></script>
+</body>
 </html>
